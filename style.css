@@ -940,15 +940,16 @@ body {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background: rgba(var(--color-background), 0.95);
+  background: var(--theme-bg);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--theme-border);
   z-index: 1000;
   transition: all var(--animation-speed) var(--animation-easing);
 }
 
 .header.scrolled {
-  background: rgba(var(--color-background), 0.98);
+  background: var(--theme-bg);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1236,16 +1237,21 @@ body {
 
 .scroll-indicator {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  gap: 4px;
+  padding: 8px 14px;
   border: 2px solid var(--theme-text-secondary);
-  border-radius: var(--radius-full);
+  border-radius: 24px;
   color: var(--theme-text-secondary);
   text-decoration: none;
   animation: bounce 2s infinite;
   transition: all var(--animation-speed) var(--animation-easing);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .scroll-indicator:hover {
@@ -1308,8 +1314,8 @@ section {
 .about__content {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 80px;
-  align-items: center;
+  gap: 60px;
+  align-items: start;
 }
 
 .about__image {
@@ -1451,15 +1457,22 @@ section {
   background: var(--theme-surface);
 }
 
-.experience__item {
-  max-width: 800px;
+.experience__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  max-width: 900px;
   margin: 0 auto;
+}
+
+.experience__item {
   background: var(--theme-bg);
   border: 1px solid var(--theme-border);
   border-radius: var(--radius-lg);
   padding: var(--space-32);
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--animation-speed) var(--animation-easing);
+  position: relative;
 }
 
 .experience__item:hover {
@@ -2654,9 +2667,6 @@ section {
 }
 
 /* Experience enhancements */
-.experience__item {
-  position: relative;
-}
 
 .experience__badge-current {
   position: absolute;
