@@ -423,10 +423,92 @@ function setupEventListeners() {
     document.addEventListener("click", handleOutsideClick);
     document.addEventListener("keydown", handleKeyboardNav);
 
+    // Project filter buttons
+    setupProjectFilters();
+
+    // Stats counters animation
+    setupStatsCounters();
+
     console.log("✅ All event listeners set up successfully");
   } catch (error) {
     console.error("❌ Error setting up event listeners:", error);
   }
+}
+
+// Project Category Filtering
+function setupProjectFilters() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  if (!filterBtns.length || !projectCards.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      this.classList.add("active");
+
+      const filter = this.getAttribute("data-filter");
+
+      projectCards.forEach((card) => {
+        const category = card.getAttribute("data-category") || "";
+        if (filter === "all" || category.includes(filter)) {
+          card.classList.remove("hidden");
+          card.style.display = "flex";
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, 30);
+        } else {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(15px)";
+          setTimeout(() => {
+            card.classList.add("hidden");
+            card.style.display = "none";
+          }, 200);
+        }
+      });
+    });
+  });
+  console.log("✅ Project filters initialized");
+}
+
+// Animated Stats Counters
+function setupStatsCounters() {
+  const statNumbers = document.querySelectorAll(".highlight__number");
+  if (!statNumbers.length) return;
+
+  const counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const targetText = el.getAttribute("data-target") || el.textContent;
+          const targetVal = parseFloat(targetText);
+
+          if (!isNaN(targetVal)) {
+            const isFloat = targetText.includes(".");
+            const suffix = el.textContent.replace(/[0-9.]/g, "");
+            let current = 0;
+            const step = targetVal / 30;
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= targetVal) {
+                el.textContent = (isFloat ? targetVal.toFixed(1) : Math.round(targetVal)) + suffix;
+                clearInterval(timer);
+              } else {
+                el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+              }
+            }, 35);
+          }
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  statNumbers.forEach((el) => counterObserver.observe(el));
+  console.log("✅ Stats counters initialized");
 }
 
 // ENHANCED CONTACT FORM HANDLING WITH EMAILJS
@@ -971,42 +1053,62 @@ function initializeAnimations() {
   console.log("🎬 Initializing animations...");
 
   try {
-    const animationObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
     const animatedElements = document.querySelectorAll(
       [
         ".hero__content > *",
+        ".hero__image-card",
         ".about__content > *",
         ".skill-category",
         ".project-card",
         ".experience__item",
         ".education__card",
+        ".cv-card",
         ".contact__form",
         ".contact__item",
       ].join(",")
     );
 
-    animatedElements.forEach((element, index) => {
-      element.style.opacity = "0";
-      element.style.transform = "translateY(20px)";
-      element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-      element.style.transitionDelay = `${index * 0.1}s`;
+    const animationObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "50px 0px 50px 0px",
+      }
+    );
 
-      animationObserver.observe(element);
+    animatedElements.forEach((element, index) => {
+      element.style.transition = "opacity 0.45s ease, transform 0.45s ease";
+      // Cap delay to max 200ms so items appear promptly
+      const delay = Math.min((index % 6) * 0.05, 0.25);
+      element.style.transitionDelay = `${delay}s`;
+
+      // Check if already in viewport
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        element.style.opacity = "1";
+        element.style.transform = "translateY(0)";
+      } else {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(16px)";
+        animationObserver.observe(element);
+      }
     });
+
+    // Fallback: reveal all elements after 2.5s to guarantee no invisible content
+    setTimeout(() => {
+      animatedElements.forEach((el) => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      });
+    }, 2500);
 
     console.log("✅ Animations initialized");
   } catch (error) {
