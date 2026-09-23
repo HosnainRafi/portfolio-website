@@ -12,8 +12,8 @@ Personal portfolio of **Hosnain Rafi**, Full-Stack Software Engineer & Feature L
 
 - **Lead Engineering Experience**: Feature Lead at **Mortgage Magic Ltd (London, UK, Remote)** delivering core UK loan origination systems and broker portals.
 - **Enterprise & Agentic AI Systems**: Creator of **DesignGate** (Automated UI Quality Gate with Playwright + Claude 3.5 Sonnet Vision) and **Agent-Swarm** (Multi-Agent CLI Orchestrator).
-- **Japanese IT Standard Alignment**: Practitioner of **報連相 (Hou-Ren-So)**, **改善 (Kaizen)**, and **品質第一 (Quality-First)**. Preparing for JLPT N5 (Creator of *Katakana Gym*).
-- **Academic Distinction**: B.Sc. (Engineering) in Information and Communication Technology (ICT) from Mawlana Bhashani Science and Technology University (MBSTU), **CGPA: 3.75 / 4.00**.
+- **Japanese IT Standard Alignment**: Practitioner of **報連相 (Hou-Ren-So)**, **改善 (Kaizen)**, and **品質第一 (Quality-First)**. Preparing for JLPT N5 (daily conversation & technical vocabulary studies).
+- **Academic Foundation**: B.Sc. (Engineering) in Information and Communication Technology (ICT) from Mawlana Bhashani Science and Technology University (MBSTU), 2019 – 2023.
 
 ---
 
@@ -31,17 +31,15 @@ Personal portfolio of **Hosnain Rafi**, Full-Stack Software Engineer & Feature L
 
 ---
 
-## 🚀 Featured Projects (12)
+## 🚀 Featured Projects (10)
 
 1. **Mortgage Origination & CRM Platform** — Enterprise SaaS for UK loan origination and real-time interest pipelines (Angular, Node.js, PostgreSQL, Docker).
 2. **DesignGate** — Agentic UI quality gate with Playwright headless evidence capture and Claude 3.5 Vision grading ([Demo](https://designgate-vhknepl8.manus.space) | [Repo](https://github.com/HosnainRafi/designgate)).
 3. **Agent-Swarm** — Universal multi-agent swarm orchestrator for CLI coding assistants ([Repo](https://github.com/HosnainRafi/agent-swarm)).
 4. **UK Mortgage Lender Scraper** — Automated interest rate and underwriting criteria extractor for 20+ UK lenders ([Repo](https://github.com/HosnainRafi/mortgage-scraper)).
-5. **Urban Grill** — Full-stack restaurant management platform with real-time Socket.IO orders and Stripe checkout ([Live](https://urban-grill.vercel.app) | [Repo](https://github.com/HosnainRafi/restaurant-project-frontend)).
-6. **Doctors BD** — Telemedicine platform with WebRTC video consults and AI symptom classification ([Live](https://doctors-bd-frontend.vercel.app) | [Repo](https://github.com/HosnainRafi/Doctors_BD_Frontend)).
+5. **Urban Grill** - Full-stack restaurant operations platform with real-time Socket.IO orders and live kitchen dispatch ([Live](https://urban-grill.vercel.app) | [Repo](https://github.com/HosnainRafi/restaurant-project-frontend)).
 7. **Life Sync** — Nationwide emergency blood donor matching platform with geolocation filtering ([Live](https://life-sync-fab40.web.app/) | [Repo](https://github.com/HosnainRafi/Life-Sync-Client)).
 8. **Scholar Management System** — Academic research, faculty, and institutional repository management portal ([Repo](https://github.com/HosnainRafi/scholar-management)).
-9. **Katakana Gym** — Japanese Katakana reading drill application with Web Audio pronunciation ([Repo](https://github.com/HosnainRafi/katakana-gym)).
 10. **Frappe Healthcare Node Integration** — Middleware bridge integrating external portals with Frappe ERP Healthcare APIs ([Repo](https://github.com/HosnainRafi/frappe_healthcare_Node_js)).
 11. **Microservice Monolith Architecture Testbed** — Event-driven decoupled microservice prototype with Redis Pub/Sub and Docker ([Repo](https://github.com/HosnainRafi/microservice-monolith)).
 12. **Believers E-Commerce** — Modern online retail application with Redux state management and shopping cart workflows ([Repo](https://github.com/HosnainRafi/belivers-ecommerce)).
